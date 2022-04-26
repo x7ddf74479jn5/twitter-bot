@@ -1,0 +1,22 @@
+{
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "repository": "https://github.com/x7ddf74479jn5/twitter-bot",
+  "author": "x7ddf74479jn5 <x7ddf74479jn5@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "functions"
+  ],
+  "dependencies": {
+    "dotenv": "16.0.0",
+    "firebase": "9.6.11"
+  },
+  "devDependencies": {
+    "esno": "0.14.1"
+  },
+  "scripts": {
+    "script:tweet": "esmo scripts/tweetContribution.ts"
+  }
+}
