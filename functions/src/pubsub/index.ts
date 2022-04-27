@@ -6,7 +6,7 @@ const runtimeOpts = {
   memory: "512MB" as const,
 };
 
-export const tweetTrend = functions
+export const tweetContribution = functions
   .region("asia-northeast1")
   .runWith(runtimeOpts)
   .pubsub.schedule("* 1 * * *")
