@@ -12,10 +12,10 @@ const firebaseConfig = {
   appId: process.env.APP_ID,
 };
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 (async () => {
-  const functions = getFunctions();
+  const functions = getFunctions(app, 'asia-northeast1');
   const tweetContribution = httpsCallable(functions, 'tweetContribution');
   try {
     const result = await tweetContribution({ data: {} });
