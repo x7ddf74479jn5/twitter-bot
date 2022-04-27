@@ -9,7 +9,7 @@ const runtimeOpts = {
 export const tweetContribution = functions
   .region("asia-northeast1")
   .runWith(runtimeOpts)
-  .https.onRequest(async (_req, res) => {
+  .https.onCall(async (_data, _context) => {
     const errorHandler = (e: unknown, type: string) => {
       console.error(`${type} tweet error`);
       console.error(e);
@@ -18,5 +18,5 @@ export const tweetContribution = functions
     // NOTE: Run in series to prevent stop in case of rejects
     await tweetCommitsPerDay().catch((e) => errorHandler(e, "Contribution"));
 
-    res.send("success");
+    return { message: "success" };
   });
