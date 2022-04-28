@@ -9,7 +9,7 @@ const runtimeOpts = {
 export const tweetContribution = functions
   .region("asia-northeast1")
   .runWith(runtimeOpts)
-  .pubsub.schedule("* 1 * * *")
+  .pubsub.schedule("0 1 * * *")
   .timeZone("Asia/Tokyo")
   .onRun(async (_context) => {
     try {
