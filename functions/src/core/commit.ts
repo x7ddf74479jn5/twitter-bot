@@ -23,6 +23,6 @@ export const tweetCommitsPerDay = async (): Promise<void> => {
 
   console.info(`${contributionDay.date} has ${commitsDay} commits`);
 
-  // tweet trends repository with a bot
+  // tweet commits per day with a bot
   await tweetFromContribution(twitterClient, contributionDay);
 };
