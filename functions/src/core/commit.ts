@@ -18,7 +18,7 @@ export const tweetCommitsPerDay = async (): Promise<void> => {
 
   if (!shouldTweet(commitsDay)) {
     console.info("No need to tweet");
-    process.exit(0);
+    return Promise.resolve();
   }
 
   console.info(`${contributionDay.date} has ${commitsDay} commits`);
