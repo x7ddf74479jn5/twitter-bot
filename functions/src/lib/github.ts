@@ -41,6 +41,9 @@ const url = "https://api.github.com/graphql";
 const yesterday = dayjs().subtract(1, "day");
 const json = { query, variables: getVariables(yesterday) };
 
+console.log("Today", dayjs().format());
+console.log("Yesterday", yesterday.format());
+
 export const getContributionWeek = async (): Promise<ContributionWeek> => {
   const { data }: GitHubAPIResponse = await got
     .post(url, {

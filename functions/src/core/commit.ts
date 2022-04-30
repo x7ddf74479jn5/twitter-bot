@@ -16,12 +16,12 @@ export const tweetCommitsPerDay = async (): Promise<void> => {
   const contributionDay = getContributionDay(contributionWeek);
   const commitsDay = getContributionCountDay(contributionDay);
 
+  console.info(`${contributionDay.date} has ${commitsDay} commits`);
+
   if (!shouldTweet(commitsDay)) {
     console.info("No need to tweet");
     return Promise.resolve();
   }
-
-  console.info(`${contributionDay.date} has ${commitsDay} commits`);
 
   // tweet commits per day with a bot
   await tweetFromContribution(twitterClient, contributionDay);
