@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import { tweetCommitsPerDay } from "../core/commit";
+import { tweetCommitsPerDay } from "../core/contribution";
 
 const runtimeOpts = {
   timeoutSeconds: 180,
