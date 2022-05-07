@@ -1,9 +1,9 @@
-import dayjs from "./dayjs";
-import type { Dayjs } from "./dayjs";
+import dayjs from "../dayjs";
+import type { Dayjs } from "../dayjs";
 import got from "got";
 
-import { GitHubAPIResponse, ContributionWeek, ContributionDay } from "../types";
-import { GITHUB_USER, GITHUB_READ_USER_TOKEN, GITHUB_ENDPOINT } from "../constants";
+import { GitHubAPIResponse, ContributionWeek, ContributionDay } from "../../types";
+import { GITHUB_USER, GITHUB_READ_USER_TOKEN, GITHUB_ENDPOINT } from "../../constants";
 
 const query = `
 query ($userName: String!, $dateTime: DateTime!) {
