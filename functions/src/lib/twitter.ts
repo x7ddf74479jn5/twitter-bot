@@ -1,5 +1,5 @@
 import TwitterApi from "twitter-api-v2";
-import { ContributionDay } from "../types";
+import { ContributionDay } from "../lib/github/contribution";
 import dayjs from "./dayjs";
 import {
   TWITTER_CONSUMER_KEY,
