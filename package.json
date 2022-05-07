@@ -17,6 +17,7 @@
     "esno": "0.14.1"
   },
   "scripts": {
-    "script:tweet": "esmo scripts/tweetContribution.ts"
+    "tweet:contribution": "esmo scripts/tweetContribution.ts",
+    "tweet:repository": "esmo scripts/tweetRepository.ts"
   }
 }
