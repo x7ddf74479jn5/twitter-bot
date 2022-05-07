@@ -1,12 +1,9 @@
 import dayjs from "./dayjs";
 import type { Dayjs } from "./dayjs";
-import * as functions from "firebase-functions";
 import got from "got";
 
 import { GitHubAPIResponse, ContributionWeek, ContributionDay } from "../types";
-
-const GITHUB_READ_USER_TOKEN = functions.config().github.read_user_token;
-const GITHUB_USER = "x7ddf74479jn5";
+import { GITHUB_USER, GITHUB_READ_USER_TOKEN, GITHUB_ENDPOINT } from "../constants";
 
 const query = `
 query ($userName: String!, $dateTime: DateTime!) {
@@ -34,13 +31,12 @@ const getVariables = (date: Dayjs) => {
 `;
 };
 
-const url = "https://api.github.com/graphql";
 const yesterday = dayjs().subtract(1, "day");
 const json = { query, variables: getVariables(yesterday) };
 
 export const getContributionWeek = async (): Promise<ContributionWeek> => {
   const { data }: GitHubAPIResponse = await got
-    .post(url, {
+    .post(GITHUB_ENDPOINT, {
       headers: { Authorization: `Bearer ${GITHUB_READ_USER_TOKEN}` },
       json,
     })
