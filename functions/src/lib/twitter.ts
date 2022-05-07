@@ -1,6 +1,6 @@
 import TwitterApi from "twitter-api-v2";
 import { ContributionDay } from "../types";
-import dayjs from "dayjs";
+import dayjs from "./dayjs";
 
 const truncateText = (text: string, maxLength: number) => {
   return text.length > maxLength ? text.substr(0, maxLength) + "..." : text;

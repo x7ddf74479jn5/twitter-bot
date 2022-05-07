@@ -1,15 +1,9 @@
-import dayjs from "dayjs";
-import type { Dayjs } from "dayjs";
-import ja from "dayjs/locale/ja";
-import timezone from "dayjs/plugin/timezone";
+import dayjs from "./dayjs";
+import type { Dayjs } from "./dayjs";
 import * as functions from "firebase-functions";
 import got from "got";
 
 import { GitHubAPIResponse, ContributionWeek, ContributionDay } from "../types";
-
-dayjs.locale(ja);
-dayjs.extend(timezone);
-dayjs.tz.setDefault("Asia/Tokyo");
 
 const GITHUB_READ_USER_TOKEN = functions.config().github.read_user_token;
 const GITHUB_USER = "x7ddf74479jn5";
