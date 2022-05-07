@@ -1,27 +1,17 @@
 import { initializeApp } from 'firebase/app';
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { firebaseConfig } from '../config/firebase';
 
-const repository = process.argv[2];
-console.log(repository);
-
-const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGE_SENDER_ID,
-  appId: process.env.APP_ID,
-};
+const repoName = process.argv[2];
 
 const app = initializeApp(firebaseConfig);
 
 (async () => {
   const functions = getFunctions(app, 'asia-northeast1');
-  const tweetContribution = httpsCallable(functions, 'tweetNewRepository');
+  const tweetRepository = httpsCallable(functions, 'callable-tweetRepository');
+  const data = { repoName: repoName };
   try {
-    const result = await tweetContribution({ data: { repository } });
+    const result = await tweetRepository(data);
     console.log(result);
   } catch (e) {
     console.error(e);
