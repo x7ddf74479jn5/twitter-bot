@@ -1,6 +1,18 @@
 import { shouldTweet } from "../lib/utils";
-import { tweetFromContribution, twitterClient } from "../lib/twitter";
+import { twitterClient, tweet, truncateText } from "../lib/twitter";
 import { getContributionWeek, getContributionCountDay, getContributionDay } from "../lib/github/contribution";
+import type { ContributionDay } from "../lib/github/contribution";
+import dayjs from "../lib/dayjs";
+
+const createTweetText = (contribution: ContributionDay): string => {
+  const contentText = `
+📅: ${dayjs(contribution.date).format("YYYY/MM/DD")}
+➕: ${contribution.contributionCount} commits
+`.trim();
+
+  // The url will be a 30-character shortened URL, so the content will be truncate to 105 characters.
+  return truncateText(contentText, 103);
+};
 
 export const tweetCommitsPerDay = async (): Promise<void> => {
   const contributionWeek = await getContributionWeek();
@@ -15,5 +27,5 @@ export const tweetCommitsPerDay = async (): Promise<void> => {
   }
 
   // tweet commits per day with a bot
-  await tweetFromContribution(twitterClient, contributionDay);
+  await tweet(twitterClient, createTweetText(contributionDay));
 };
